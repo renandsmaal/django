@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Pagina de clientes {% endblock %}
+
+    {% block main %}
+
+    <h1>Seja bem vindo!</h1>
+
+
+   <p>Lista de clientes</p>
+
+        <ul>
+        {% for person in persons %}
+
+            <li>
+                <a href="{% url 'persons_update' person.id %}"> {{ person.first_name }}</a>
+                <a href="{% url 'persons_delete' person.id %}">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </li>
+
+        {% endfor %}
+        </ul>
+<a href="{% url 'person_new' %}" class="btn btn-primary">Novo Cliente</a>
+<p><a href="{% url 'logout' %}" class="btn btn-danger">Sair</a></p>
+
+    {% endblock %}
+
